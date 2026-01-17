@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
  * ProductGrid Component
  * Responsive grid layout for displaying product cards
  */
-export default function ProductGrid({ products, isLoading, query }) {
+export default function ProductGrid({ products, isLoading, query, sortBy, onSortChange }) {
     // Skeleton loader for loading state
     const SkeletonCard = () => (
         <div className="bg-white rounded-sm border border-gray-200 p-4 animate-pulse">
@@ -78,11 +78,14 @@ export default function ProductGrid({ products, isLoading, query }) {
                 {/* Sort Dropdown */}
                 <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-600">Sort by:</span>
-                    <select className="border border-gray-300 rounded text-sm px-2 py-1 bg-gray-50 cursor-pointer hover:bg-gray-100">
-                        <option value="featured">Featured</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="savings">Best Savings</option>
+                    <select 
+                        value={sortBy}
+                        onChange={(e) => onSortChange(e.target.value)}
+                        className="border border-gray-300 rounded text-sm px-2 py-1 bg-gray-50 cursor-pointer hover:bg-gray-100 outline-none"
+                    >
+                        <option value="relevance">Featured</option>
+                        <option value="price_asc">Price: Low to High</option>
+                        <option value="price_desc">Price: High to Low</option>
                         <option value="rating">Avg. Customer Review</option>
                     </select>
                 </div>

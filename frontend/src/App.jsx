@@ -19,6 +19,7 @@ function App() {
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [isFallback, setIsFallback] = useState(false);
+    const [sortBy, setSortBy] = useState('relevance');
     const [filters, setFilters] = useState({
         category: 'All Categories',
         priceRange: null,
@@ -53,8 +54,37 @@ function App() {
 
     // Update filtered products when filters or products change
     useEffect(() => {
-        setFilteredProducts(applyFilters(products, filters));
-    }, [products, filters, applyFilters]);
+        let result = applyFilters(products, filters);
+
+        // Apply Sorting
+        const getMinPrice = (p) => {
+            const prices = [p.amazon_price, p.flipkart_price].filter(p => p !== null);
+            return prices.length > 0 ? Math.min(...prices) : Infinity;
+        };
+
+        result.sort((a, b) => {
+            // Primary Sort: Prioritize products with comparisons (matches)
+            const aHasMatch = a.amazon_price && a.flipkart_price;
+            const bHasMatch = b.amazon_price && b.flipkart_price;
+
+            if (aHasMatch && !bHasMatch) return -1;
+            if (!aHasMatch && bHasMatch) return 1;
+
+            // Secondary Sort: Based on selected criteria
+            if (sortBy === 'price_asc') {
+                return getMinPrice(a) - getMinPrice(b);
+            } else if (sortBy === 'price_desc') {
+                return getMinPrice(b) - getMinPrice(a);
+            } else if (sortBy === 'rating') {
+                return (b.rating || 0) - (a.rating || 0);
+            } else {
+                // Default Relevance: use original ID as tie-breaker
+                return a.id - b.id;
+            }
+        });
+
+        setFilteredProducts(result);
+    }, [products, filters, applyFilters, sortBy]);
 
     // Search products from API
     const handleSearch = async (query) => {
@@ -141,6 +171,8 @@ function App() {
                     products={filteredProducts}
                     isLoading={isLoading}
                     query={searchQuery}
+                    sortBy={sortBy}
+                    onSortChange={setSortBy}
                 />
             </div>
 
