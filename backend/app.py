@@ -59,12 +59,14 @@ def search():
     
     Query Parameters:
         q (str): Search query string
+        sort (str): Sort option (relevance, price_asc, price_desc, rating)
         
     Returns:
         JSON response with products array
     """
     query = request.args.get('q', '').strip()
     use_mock = request.args.get('mock', 'false').lower() == 'true'
+    sort_by = request.args.get('sort', 'relevance').lower()
     
     if not query:
         return jsonify({
@@ -73,7 +75,7 @@ def search():
             'products': []
         }), 400
     
-    print(f"[API] Searching for: {query}")
+    print(f"[API] Searching for: {query} (Sort: {sort_by})")
     start_time = time.time()
     
     if use_mock:
@@ -83,6 +85,21 @@ def search():
     else:
         # Increase timeout for live scraping
         products, is_fallback = search_with_timeout(query, timeout=45)
+    
+    # Implement Sorting
+    if products and not is_fallback:
+        def get_min_price(p):
+            prices = [p.get('amazon_price'), p.get('flipkart_price')]
+            valid_prices = [pr for pr in prices if pr is not None]
+            return min(valid_prices) if valid_prices else float('inf')
+
+        if sort_by == 'price_asc':
+            products.sort(key=get_min_price)
+        elif sort_by == 'price_desc':
+            products.sort(key=get_min_price, reverse=True)
+        elif sort_by == 'rating':
+            products.sort(key=lambda p: p.get('rating') or 0, reverse=True)
+        # default is relevance (matched first), which scraper.py already handles
     
     elapsed = time.time() - start_time
     print(f"[API] Returning {len(products)} products in {elapsed:.2f}s (fallback={is_fallback})")
@@ -113,9 +130,10 @@ def index():
         'name': 'ShopSync API',
         'version': '1.0.0',
         'endpoints': {
-            '/search': 'GET - Search products (param: q)',
+            '/search': 'GET - Search products (params: q, sort, mock)',
             '/health': 'GET - Health check'
-        }
+        },
+        'sort_options': ['relevance', 'price_asc', 'price_desc', 'rating']
     })
 
 
@@ -123,6 +141,12 @@ if __name__ == '__main__':
     print("=" * 50)
     print("ShopSync API Server")
     print("=" * 50)
+    
+    # Preload AI model at startup (not lazy)
+    print("[STARTUP] Preloading AI model...")
+    from scraper import preload_model
+    preload_model()
+    
     print("Endpoints:")
     print("  GET /search?q=<query>  - Search products")
     print("  GET /health            - Health check")
