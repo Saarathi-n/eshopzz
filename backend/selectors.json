@@ -1,0 +1,19 @@
+{
+  "amazon": {
+    "container": "[data-component-type='s-search-result']",
+    "title": "h2 a span",
+    "price": ".a-price-whole",
+    "image": "img.s-image",
+    "link": "h2 a",
+    "rating": ".a-icon-star-small span"
+  },
+  "flipkart": {
+    "container": "div[data-id]",
+    "title": "div._4rR01T, a.s1Q9rs",
+    "price": "div._30jeq3",
+    "image": "img._396cs4, img._2r_T1I",
+    "link": "a._1fQZEK, a._2rpwqI",
+    "rating": "div._3LWZlK"
+  },
+  "analyzed_at": "2026-01-17 08:16:22"
+}

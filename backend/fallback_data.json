@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Apple iPhone 16 (Black, 128 GB)",
+      "image": "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/n/q/h/-original-imahgfmzjj8gtqbc.jpeg?q=70",
+      "rating": 4.6,
+      "is_prime": true,
+      "amazon_price": 79900,
+      "amazon_link": "https://www.amazon.in/dp/B0CHX2F5QT",
+      "flipkart_price": 69900,
+      "flipkart_link": "https://www.flipkart.com/apple-iphone-16-black-128-gb/p/itmb07d67f995271"
+    },
+    {
+      "id": 2,
+      "title": "Apple iPhone 17 (Lavender, 256 GB)",
+      "image": "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/j/7/f/-original-imahft5gfgwpt6pr.jpeg?q=70",
+      "rating": 4.7,
+      "is_prime": true,
+      "amazon_price": 84900,
+      "amazon_link": "https://www.amazon.in/dp/B0CHX1W1XY",
+      "flipkart_price": 82900,
+      "flipkart_link": "https://www.flipkart.com/apple-iphone-17-lavender-256-gb/p/itmf37c8dffa4165"
+    },
+    {
+      "id": 3,
+      "title": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones - Black",
+      "image": "https://m.media-amazon.com/images/I/61+btxzpfDL._AC_UY218_.jpg",
+      "rating": 4.4,
+      "is_prime": true,
+      "amazon_price": 26990,
+      "amazon_link": "https://www.amazon.in/dp/B0BXYQVFVL",
+      "flipkart_price": 27490,
+      "flipkart_link": "https://www.flipkart.com/sony-wh-1000xm5"
+    },
+    {
+      "id": 4,
+      "title": "Sony WH-1000XM4 Wireless Noise Cancelling Headphones - Silver",
+      "image": "https://m.media-amazon.com/images/I/71o8Q5XJS5L._AC_UY218_.jpg",
+      "rating": 4.5,
+      "is_prime": true,
+      "amazon_price": 19990,
+      "amazon_link": "https://www.amazon.in/dp/B0863TXGM3",
+      "flipkart_price": 19499,
+      "flipkart_link": "https://www.flipkart.com/sony-wh-1000xm4"
+    },
+    {
+      "id": 5,
+      "title": "Nike Air Max 270 Men's Running Shoes - Black/White",
+      "image": "https://m.media-amazon.com/images/I/71s4LoXXOaL._AC_UY218_.jpg",
+      "rating": 4.3,
+      "is_prime": false,
+      "amazon_price": 13995,
+      "amazon_link": "https://www.amazon.in/dp/B07P3NNTJ9",
+      "flipkart_price": 12999,
+      "flipkart_link": "https://www.flipkart.com/nike-air-max-270"
+    },
+    {
+      "id": 6,
+      "title": "Nike Revolution 6 Running Shoes - Blue",
+      "image": "https://m.media-amazon.com/images/I/61DUO0NqyyL._AC_UY218_.jpg",
+      "rating": 4.2,
+      "is_prime": true,
+      "amazon_price": 3695,
+      "amazon_link": "https://www.amazon.in/dp/B09WRGFWLK",
+      "flipkart_price": 3999,
+      "flipkart_link": "https://www.flipkart.com/nike-revolution-6"
+    },
+    {
+      "id": 7,
+      "title": "Samsung Galaxy S24 Ultra (256 GB) - Titanium Black",
+      "image": "https://m.media-amazon.com/images/I/71Sa3dqTqzL._AC_UY218_.jpg",
+      "rating": 4.4,
+      "is_prime": true,
+      "amazon_price": 129999,
+      "amazon_link": "https://www.amazon.in/dp/B0CTDKSGZW",
+      "flipkart_price": 124999,
+      "flipkart_link": "https://www.flipkart.com/samsung-galaxy-s24-ultra"
+    },
+    {
+      "id": 8,
+      "title": "boAt Rockerz 450 Wireless Headphones - Black",
+      "image": "https://m.media-amazon.com/images/I/61Fp6bPUImL._AC_UY218_.jpg",
+      "rating": 4.1,
+      "is_prime": true,
+      "amazon_price": 1299,
+      "amazon_link": "https://www.amazon.in/dp/B0856HNMR5",
+      "flipkart_price": 1199,
+      "flipkart_link": "https://www.flipkart.com/boat-rockerz-450"
+    }
+  ]
+}

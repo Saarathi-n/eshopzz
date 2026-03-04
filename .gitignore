@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Local files
+.env
+*.html
+*.log
+flipkart_debug.html
+flipkart_dump.html
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
